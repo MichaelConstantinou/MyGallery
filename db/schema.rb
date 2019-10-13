@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 2019_10_13_104746) do
 
   create_table "galleries", force: :cascade do |t|
     t.integer "user_id"
-    t.string "name"
+    t.string "name", null: false
     t.string "cover_image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
