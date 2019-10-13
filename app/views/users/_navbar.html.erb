@@ -1,8 +1,15 @@
 <div class="fluid-container">
-  <nav class="navbar navbar-inverse col-xs-12">
+  <nav class="navbar-nav navbar-inverse col-xs-12">
     <%= image_tag("logo.png", class: "logo")%>
     <span class="navbar-nav col-xs-10 h1">My Gallery</span>
-    
+    <ul class="nav navbar-nav navbar-right">
+      <% if current_user %>
+        <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+      <% else %>
+         <li><%= link_to "Login", new_user_session_path %></li>
+         <li><%= link_to "Register", new_user_registration_path %></li>
+      <% end %>
+    </ul>
   </nav>
 </div>
   
