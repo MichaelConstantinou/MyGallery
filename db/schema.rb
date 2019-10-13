@@ -13,16 +13,20 @@
 ActiveRecord::Schema.define(version: 2019_10_13_104746) do
 
   create_table "galleries", force: :cascade do |t|
+    t.integer "user_id"
     t.string "name"
     t.string "cover_image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_galleries_on_user_id"
   end
 
   create_table "images", force: :cascade do |t|
+    t.integer "gallery_id"
     t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["gallery_id"], name: "index_images_on_gallery_id"
   end
 
   create_table "users", force: :cascade do |t|
