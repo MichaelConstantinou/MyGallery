@@ -64,3 +64,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise', '~> 4.7', '>= 4.7.1'
 gem 'jquery-rails'
 gem 'bootstrap-sass'
+
+# Gems for uploading images
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog'
+gem 'figaro'
+gem 'unf'
