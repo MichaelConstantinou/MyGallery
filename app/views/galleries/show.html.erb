@@ -12,3 +12,16 @@
 
 <%= link_to 'Edit', edit_gallery_path(@gallery) %> |
 <%= link_to 'Back', galleries_path %>
+
+<%= form_with(url: images_path) do |form| %>
+  <div class="field">
+    <%= form.label :url %>
+    <%= form.file_field :url %>
+  </div>
+
+  <%= form.hidden_field :gallery_id, value: @gallery.id %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
