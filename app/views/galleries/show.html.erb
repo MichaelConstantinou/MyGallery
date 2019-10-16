@@ -1,26 +1,41 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Album Title:</strong>
   <%= @gallery.name %>
 </p>
 
 <p>
-  <strong>Cover image:</strong>
-  <%= @gallery.cover_image %>
+  <strong>Date Created:</strong>
+  <%= @gallery.created_at %>
+</p>
+
+<p>
+  <strong>Date last modified:</strong>
+  <%= @gallery.updated_at %>
 </p>
 
 <%= link_to 'Edit', edit_gallery_path(@gallery) %> |
 <%= link_to 'Back', galleries_path %>
+<br>
+<br>
 
+<% @gallery.images.each do |image| %>
+  <tr>
+    <td><%= image_tag(image.url.thumbnail.url) %></td>
+    <td><%= link_to 'Show', image %></td>
+  <tr>
+<% end %>
+<br>
+<br>
 <%= form_with(url: images_path) do |form| %>
   <div class="field">
-    <%= form.label :url %>
+    <%= form.label :upload_image_to_album %>
     <%= form.file_field :url %>
   </div>
 
   <%= form.hidden_field :gallery_id, value: @gallery.id %>
-
+  <br>
   <div class="actions">
     <%= form.submit %>
   </div>

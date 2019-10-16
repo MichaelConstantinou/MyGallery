@@ -1,6 +1,7 @@
-<h1>Editing Image</h1>
+<h1>Replace Image</h1>
 
 <%= render 'form', image: @image %>
+<br>
 
 <%= link_to 'Show', @image %> |
-<%= link_to 'Back', images_path %>
+<%= link_to 'Back', gallery_path(@image.gallery_id) %>

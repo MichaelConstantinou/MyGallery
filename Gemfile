@@ -68,6 +68,7 @@ gem 'bootstrap-sass'
 # Gems for uploading images
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'image_magick'
 gem 'fog-aws', '~> 3.5', '>= 3.5.2'
 gem 'figaro'
 gem 'unf'

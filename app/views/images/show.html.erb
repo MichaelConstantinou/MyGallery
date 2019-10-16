@@ -1,9 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Url:</strong>
-  <%= @image.url %>
+  <%= image_tag(@image.url.image.url) %>
+  <br>
+  <h4>Image uploaded at:</h4>
+  <%= @image.updated_at %>
 </p>
 
 <%= link_to 'Edit', edit_image_path(@image) %> |
-<%= link_to 'Back', images_path %>
+<%= link_to 'Back', gallery_path(@image.gallery_id) %>
