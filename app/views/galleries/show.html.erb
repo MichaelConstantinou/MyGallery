@@ -22,8 +22,7 @@
 
 <% @gallery.images.each do |image| %>
   <tr>
-    <td><%= image_tag(image.url.thumbnail.url) %></td>
-    <td><%= link_to 'Show', image %></td>
+    <a href="<%= image_path(image.id) %>"><td><%= image_tag(image.url.thumbnail.url) %></td></a>
   <tr>
 <% end %>
 <br>
