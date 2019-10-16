@@ -15,9 +15,6 @@
   <%= @gallery.updated_at %>
 </p>
 
-<%= link_to 'Edit', edit_gallery_path(@gallery) %> |
-<%= link_to 'Back', galleries_path %>
-<%= link_to 'Destroy', gallery_path, method: :delete, data: { confirm: 'Are you sure?' } %>
 <br>
 <br>
 
@@ -27,16 +24,24 @@
   <tr>
 <% end %>
 <br>
-<br>
-<%= form_with(url: images_path) do |form| %>
-  <div class="field">
-    <%= form.label :upload_image_to_album %>
-    <%= form.file_field :url %>
-  </div>
 
-  <%= form.hidden_field :gallery_id, value: @gallery.id %>
-  <br>
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+<%= link_to 'Back', galleries_path %>
+<% if current_user %>  
+  <% if current_user.id == @gallery.user_id %>
+    | <%= link_to 'Edit', edit_gallery_path(@gallery) %> |
+    <%= link_to 'Destroy', gallery_path, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= form_with(url: images_path) do |form| %>
+      <div class="field">
+        <%= form.label :upload_image_to_album %>
+        <%= form.file_field :url %>
+      </div>
+    
+      <%= form.hidden_field :gallery_id, value: @gallery.id %>
+      <br>
+      <div class="actions">
+        <%= form.submit %>
+      </div>
+    <% end %>
+    <br>
+  <% end %>
 <% end %>

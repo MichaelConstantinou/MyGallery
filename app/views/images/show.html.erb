@@ -7,6 +7,10 @@
   <%= @image.updated_at %>
 </p>
 
-<%= link_to 'Edit', edit_image_path(@image) %> |
-<%= link_to 'Back', gallery_path(@image.gallery_id) %>
-<%= link_to 'Destroy', image_path, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Back', gallery_path(@image.gallery_id) %> 
+<% if current_user %>
+  <% if current_user.id == Gallery.find(@image.gallery_id).user_id %>
+    | <%= link_to 'Edit', edit_image_path(@image) %> |
+    <%= link_to 'Destroy', image_path, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+<% end %>

@@ -20,13 +20,18 @@
         <td><a href="<%= gallery_path(gallery.id) %>"><%= image_tag(gallery.images.first.url.cover.url) %></a></td>
         <td><%= gallery.created_at %><td>
         <td><%= gallery.updated_at %><td>
-        <td><%= link_to 'Edit', edit_gallery_path(gallery) %></td>
-        <td><%= link_to 'Destroy', gallery, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if current_user %>
+          <% if current_user.id == gallery.user_id %>
+            <td><%= link_to 'Edit', edit_gallery_path(gallery) %></td>
+            <td><%= link_to 'Destroy', gallery, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Gallery', new_gallery_path %>
+<% if current_user %>
+  <%= link_to 'Create New Gallery', new_gallery_path %>
+<% end %>
