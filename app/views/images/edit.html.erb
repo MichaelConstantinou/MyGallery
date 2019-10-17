@@ -1,6 +1,10 @@
 <div class="container">
 	<h1 class="galleries-title">Replace Image</h1>
 
+	<img class="img">
+		<%= image_tag(@image.url.cover.url) %>
+	 </img>
+	 
 	<%= render 'form', image: @image %>
 	<br>
 
