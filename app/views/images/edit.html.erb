@@ -1,7 +1,9 @@
-<h1>Replace Image</h1>
+<div class="container">
+	<h1>Replace Image</h1>
 
-<%= render 'form', image: @image %>
-<br>
+	<%= render 'form', image: @image %>
+	<br>
 
-<%= link_to 'Show', @image %> |
-<%= link_to 'Back', gallery_path(@image.gallery_id) %>
+	<%= link_to 'Show', @image %> |
+	<%= link_to 'Back', gallery_path(@image.gallery_id) %>
+</div>

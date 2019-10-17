@@ -1,47 +1,49 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Album Title:</strong>
-  <%= @gallery.name %>
-</p>
+  <p class="lead" >
+    <strong>Album Title:</strong>
+    <%= @gallery.name %>
+  </p>
 
-<p>
-  <strong>Date Created:</strong>
-  <%= @gallery.created_at %>
-</p>
+  <p class="lead">
+    <strong>Date Created:</strong>
+    <%= @gallery.created_at %>
+  </p>
 
-<p>
-  <strong>Date last modified:</strong>
-  <%= @gallery.updated_at %>
-</p>
+  <p class="lead">
+    <strong>Date last modified:</strong>
+    <%= @gallery.updated_at %>
+  </p>
 
-<br>
-<br>
+  <br>
+  <br>
 
-<% @gallery.images.each do |image| %>
-  <tr>
-    <a href="<%= image_path(image.id) %>"><td><%= image_tag(image.url.thumbnail.url) %></td></a>
-  <tr>
-<% end %>
-<br>
-
-<%= link_to 'Back', galleries_path %>
-<% if current_user %>  
-  <% if current_user.id == @gallery.user_id %>
-    | <%= link_to 'Edit', edit_gallery_path(@gallery) %> |
-    <%= link_to 'Destroy', gallery_path, method: :delete, data: { confirm: 'Are you sure?' } %>
-    <%= form_with(url: images_path) do |form| %>
-      <div class="field">
-        <%= form.label :upload_image_to_album %>
-        <%= form.file_field :url %>
-      </div>
-    
-      <%= form.hidden_field :gallery_id, value: @gallery.id %>
-      <br>
-      <div class="actions">
-        <%= form.submit %>
-      </div>
-    <% end %>
-    <br>
+  <% @gallery.images.each do |image| %>
+    <tr>
+      <a href="<%= image_path(image.id) %>"><td><%= image_tag(image.url.thumbnail.url) %></td></a>
+    <tr>
   <% end %>
-<% end %>
+  <br>
+
+  <%= link_to 'Back', galleries_path %>
+  <% if current_user %>  
+    <% if current_user.id == @gallery.user_id %>
+      | <%= link_to 'Edit', edit_gallery_path(@gallery) %> |
+      <%= link_to 'Destroy', gallery_path, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= form_with(url: images_path) do |form| %>
+        <div class="field">
+          <%= form.label :upload_image_to_album %>
+          <%= form.file_field :url %>
+        </div>
+      
+        <%= form.hidden_field :gallery_id, value: @gallery.id %>
+        <br>
+        <div class="actions">
+          <%= form.submit %>
+        </div>
+      <% end %>
+      <br>
+    <% end %>
+  <% end %>
+</div>

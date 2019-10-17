@@ -1,37 +1,39 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <p id="notice"><%= notice %></p>
 
-<h1>Galleries</h1>
+  <h1 class="display-1">Galleries</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Album</th>
-      <th><th>
-      <th>Date created</th>
-      <th>Last modified</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @galleries.each do |gallery| %>
+  <table>
+    <thead>
       <tr>
-        <td><%= gallery.name %></td>
-        <td><a href="<%= gallery_path(gallery.id) %>"><%= image_tag(gallery.images.first.url.cover.url) %></a></td>
-        <td><%= gallery.created_at %><td>
-        <td><%= gallery.updated_at %><td>
-        <% if current_user %>
-          <% if current_user.id == gallery.user_id %>
-            <td><%= link_to 'Edit', edit_gallery_path(gallery) %></td>
-            <td><%= link_to 'Destroy', gallery, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          <% end %>
-        <% end %>
+        <th>Album</th>
+        <th><th>
+        <th>Date created</th>
+        <th>Last modified</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
-<% if current_user %>
-  <%= link_to 'Create New Gallery', new_gallery_path %>
-<% end %>
+    <tbody>
+      <% @galleries.each do |gallery| %>
+        <tr>
+          <td><%= gallery.name %></td>
+          <td><a href="<%= gallery_path(gallery.id) %>"><%= image_tag(gallery.images.first.url.cover.url) %></a></td>
+          <td><%= gallery.created_at %><td>
+          <td><%= gallery.updated_at %><td>
+          <% if current_user %>
+            <% if current_user.id == gallery.user_id %>
+              <td><%= link_to 'Edit', edit_gallery_path(gallery) %></td>
+              <td><%= link_to 'Destroy', gallery, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% end %>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+  <% if current_user %>
+    <%= link_to 'Create New Gallery', new_gallery_path %>
+  <% end %>
+</div>

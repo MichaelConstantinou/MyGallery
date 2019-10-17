@@ -1,16 +1,18 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <%= image_tag(@image.url.image.url) %>
-  <br>
-  <h4>Image uploaded at:</h4>
-  <%= @image.updated_at %>
-</p>
+  <p>
+    <%= image_tag(@image.url.image.url) %>
+    <br>
+    <h4>Image uploaded at:</h4>
+    <%= @image.updated_at %>
+  </p>
 
-<%= link_to 'Back', gallery_path(@image.gallery_id) %> 
-<% if current_user %>
-  <% if current_user.id == Gallery.find(@image.gallery_id).user_id %>
-    | <%= link_to 'Edit', edit_image_path(@image) %> |
-    <%= link_to 'Destroy', image_path, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <%= link_to 'Back', gallery_path(@image.gallery_id) %> 
+  <% if current_user %>
+    <% if current_user.id == Gallery.find(@image.gallery_id).user_id %>
+      | <%= link_to 'Edit', edit_image_path(@image) %> |
+      <%= link_to 'Destroy', image_path, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
   <% end %>
-<% end %>
+</div>
