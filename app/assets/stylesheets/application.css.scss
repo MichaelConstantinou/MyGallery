@@ -26,3 +26,15 @@
   .create-gallery {
     margin: 0px 0px 20px 20px;
   }
+
+  .jumbotron {
+    margin-top: 200px;
+    background: no-repeat center bottom fixed url("gallery-unsplash.jpg");
+    position: relative;
+    background-size: cover;
+    color: white;
+    }
+
+    .a-primary {
+      color: white;
+    }
