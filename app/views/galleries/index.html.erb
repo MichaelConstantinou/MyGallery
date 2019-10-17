@@ -1,39 +1,35 @@
 <div class="container">
   <p id="notice"><%= notice %></p>
 
-  <h1 class="display-1">Galleries</h1>
+  <h1 class="galleries-title">Galleries</h1>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Album</th>
-        <th><th>
-        <th>Date created</th>
-        <th>Last modified</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @galleries.each do |gallery| %>
-        <tr>
-          <td><%= gallery.name %></td>
-          <td><a href="<%= gallery_path(gallery.id) %>"><%= image_tag(gallery.images.first.url.cover.url) %></a></td>
-          <td><%= gallery.created_at %><td>
-          <td><%= gallery.updated_at %><td>
-          <% if current_user %>
-            <% if current_user.id == gallery.user_id %>
-              <td><%= link_to 'Edit', edit_gallery_path(gallery) %></td>
-              <td><%= link_to 'Destroy', gallery, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-            <% end %>
-          <% end %>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-
-  <br>
   <% if current_user %>
     <%= link_to 'Create New Gallery', new_gallery_path %>
   <% end %>
+      
+  <% @galleries.each do |gallery| %>
+    <div class="gallery-container">
+      <div class="row mx-lg-n5">
+        <div class="col-12 col-md-5">
+          <a href="<%= gallery_path(gallery.id) %>"><%= image_tag(gallery.images.first.url.cover.url) %></a>
+        </div>
+        <div class="col-6 col-md-7">
+          <h2 class="album-title"><%= gallery.name %></h2>
+          <%= gallery.created_at.strftime('%d-%m-%Y %H:%M:%S') %>
+          <br>
+          <% if current_user %>
+            <% if current_user.id == gallery.user_id %>
+              <%= link_to 'Edit', edit_gallery_path(gallery) %>   |
+              <%= link_to 'Delete', gallery, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <br>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  
+  <% end %>
+
+  <br>
+ 
 </div>

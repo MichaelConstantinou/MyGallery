@@ -23,8 +23,26 @@
     font-family: Vodka;
   }
 
+  .galleries-title {
+    font-size: 5rem;
+    font-weight: 330;
+    line-height: 3.0;
+  }
+
+  .album-title {
+    font-size: 4rem;
+    font-weight: 300;
+    line-height: 2.0;
+  }
+
+
+
   .create-gallery {
     margin: 0px 0px 20px 20px;
+  }
+
+  .gallery-container {
+    margin: 50px;
   }
 
   .jumbotron {
