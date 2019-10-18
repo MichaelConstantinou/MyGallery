@@ -23,7 +23,7 @@
                 <div class="field">
                   <br>
                   <%= form.label :upload_image_to_album %>
-                  <%= form.file_field :url %>
+                  <%= form.file_field :url, required: true %>
                 </div>
                 <%= form.hidden_field :gallery_id, value: @gallery.id %>
                 <br>
