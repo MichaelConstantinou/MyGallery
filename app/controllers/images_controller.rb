@@ -27,7 +27,7 @@ class ImagesController < ApplicationController
     @image = Image.new(url: params[:url], gallery_id: params[:gallery_id])
     respond_to do |format|
       if @image.save
-        format.html { redirect_to gallery_path(@image.gallery_id), notice: 'Image was successfully created.' }
+        format.html { redirect_to gallery_path(@image.gallery_id), notice: 'Image was successfully uploaded.' }
         format.json { render :show, status: :created, location: @image }
       else
         format.html { render :new }
@@ -55,7 +55,7 @@ class ImagesController < ApplicationController
   def destroy
     @image.destroy
     respond_to do |format|
-      format.html { redirect_to gallery_path(@image.gallery_id), notice: 'Image was successfully destroyed.' }
+      format.html { redirect_to gallery_path(@image.gallery_id), notice: 'Image was successfully deleted.' }
       format.json { head :no_content }
     end
   end
