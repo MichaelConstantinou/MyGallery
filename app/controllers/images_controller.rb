@@ -27,7 +27,7 @@ class ImagesController < ApplicationController
     @image = Image.new(url: params[:url], gallery_id: params[:gallery_id])
     respond_to do |format|
       if @image.save
-        format.html { redirect_to @gallery, notice: 'Image was successfully created.' }
+        format.html { redirect_to gallery_path(@image.gallery_id), notice: 'Image was successfully created.' }
         format.json { render :show, status: :created, location: @image }
       else
         format.html { render :new }
@@ -41,7 +41,7 @@ class ImagesController < ApplicationController
   def update
     respond_to do |format|
       if @image.update(image_params)
-        format.html { redirect_to @image, notice: 'Image was successfully updated.' }
+        format.html { redirect_to @image, notice: 'Image was successfully uploaded.' }
         format.json { render :show, status: :ok, location: @image }
       else
         format.html { render :edit }

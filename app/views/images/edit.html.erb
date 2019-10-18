@@ -3,11 +3,9 @@
 
 	<img class="img">
 		<%= image_tag(@image.url.cover.url) %>
-	 </img>
+	</img>
 	 
 	<%= render 'form', image: @image %>
-	<br>
-
 	<%= link_to 'Show', @image %> |
 	<%= link_to 'Back', gallery_path(@image.gallery_id) %>
 </div>

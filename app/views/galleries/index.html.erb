@@ -11,9 +11,11 @@
     <div class="gallery-container">
       <div class="row mx-lg-n5">
         <div class="col-12 col-md-5">
-          <a href="<%= gallery_path(gallery.id) %>"><%= image_tag(gallery.images.first.url.cover.url) %></a>
+          <% if gallery.images.first %>
+            <a href="<%= gallery_path(gallery.id) %>"><%= image_tag(gallery.images.first.url.cover.url) %></a>
+          <% end %>
         </div>
-        <div class="col-6 col-md-7">
+        <div class="col-6 col-md-7 album-info">
           <h2 class="album-title"><%= gallery.name %></h2>
           <%= gallery.created_at.strftime('%d-%m-%Y %H:%M:%S') %>
           <br>
