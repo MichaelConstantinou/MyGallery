@@ -3,9 +3,10 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
 
 	before do
+		User.delete_all
 		@user = User.create!(email: "joe@gmail.com", password: "bloggsbloggs")
-		Gallery.create(name: "My first gallery", user_id: 1)
-		Gallery.create(name: "My second gallery", user_id: 1)
+		Gallery.create(name: "My first gallery", user_id: @user.id)
+		Gallery.create(name: "My second gallery", user_id: @user.id)
 	end
 	
 	describe "create" do

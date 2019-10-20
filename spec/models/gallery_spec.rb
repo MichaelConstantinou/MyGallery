@@ -3,10 +3,11 @@ require 'rails_helper'
 RSpec.describe Gallery, type: :model do
 
 	before do
-		User.create!(email: "joe@gmail.com", password: "bloggsbloggs")
-		@gallery = Gallery.create!(name: "My first gallery", user_id: 1)
-		Image.create!(gallery_id: 1)
-		Image.create!(gallery_id: 1)
+		User.delete_all
+		@user = User.create!(email: "joe@gmail.com", password: "bloggsbloggs")
+		@gallery = Gallery.create!(name: "My first gallery", user_id: @user.id)
+		Image.create!(gallery_id: @gallery.id)
+		Image.create!(gallery_id: @gallery.id)
 	end
 	
 	describe "create" do
