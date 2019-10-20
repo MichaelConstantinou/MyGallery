@@ -1,0 +1,11 @@
+<div class="container">
+	<h1 class="galleries-title">Replace Image</h1>
+
+	<img class="img">
+		<%= image_tag(@image.url.cover.url) %>
+	</img>
+	 
+	<%= render 'form', image: @image %>
+	<%= link_to 'Show', @image %> |
+	<%= link_to 'Back', gallery_path(@image.gallery_id) %>
+</div>

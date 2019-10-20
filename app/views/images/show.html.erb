@@ -1,0 +1,19 @@
+<div class="container">
+  <p id="notice"><%= notice %></p>
+  <p>
+    <img class="img">
+      <%= image_tag(@image.url.image.url) %>
+    </img>
+    <br>
+    <h4>Image uploaded at:</h4>
+    <%= @image.updated_at.strftime('%d-%m-%Y %H:%M:%S') %>
+  </p>
+
+  <%= link_to 'Back', gallery_path(@image.gallery_id) %> 
+  <% if current_user %>
+    <% if current_user.id == Gallery.find(@image.gallery_id).user_id %>
+      |<%= link_to 'Edit', edit_image_path(@image) %> |
+      <%= link_to 'Delete', image_path, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
+  <% end %>
+</div>
