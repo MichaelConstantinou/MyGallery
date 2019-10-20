@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class GalleriesController < ApplicationController
-  before_action :set_gallery, only: [:show, :edit, :update, :destroy]
+  before_action :set_gallery, only: %i[show edit update destroy]
   skip_before_action :verify_authenticity_token
 
   # GET /galleries
@@ -10,8 +12,7 @@ class GalleriesController < ApplicationController
 
   # GET /galleries/1
   # GET /galleries/1.json
-  def show
-  end
+  def show; end
 
   # GET /galleries/new
   def new
@@ -19,14 +20,13 @@ class GalleriesController < ApplicationController
   end
 
   # GET /galleries/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /galleries
   # POST /galleries.json
   def create
-    @gallery = Gallery.new(name: params[:name], user_id: current_user.id )
-   
+    @gallery = Gallery.new(name: params[:name], user_id: current_user.id)
+
     respond_to do |format|
       if @gallery.save
         format.html { redirect_to @gallery, notice: 'Gallery was successfully created.' }
@@ -63,13 +63,14 @@ class GalleriesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_gallery
-      @gallery = Gallery.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def gallery_params
-      params.permit(:name, :cover_image)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_gallery
+    @gallery = Gallery.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def gallery_params
+    params.permit(:name, :cover_image)
+  end
 end
