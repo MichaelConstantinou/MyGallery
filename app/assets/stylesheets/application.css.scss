@@ -33,6 +33,7 @@
     font-size: 4rem;
     font-weight: 300;
     line-height: 2.0;
+    margin-bottom: 0px;
   }
 
   .images-title {
@@ -67,6 +68,10 @@
     position: relative;
     background-size: cover;
     color: white;
+    }
+
+    .box {
+      color: black;
     }
 
     .a-primary {
