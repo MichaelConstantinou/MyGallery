@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2019_10_20_123114) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "galleries", force: :cascade do |t|
     t.integer "user_id"
     t.string "name"
